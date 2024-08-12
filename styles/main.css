@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* General reset and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* CSS untuk menyembunyikan skip link */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
+/* Menampilkan skip link ketika di-fokus (diakses melalui keyboard) */
+.skip-link:focus {
+    position: static;
+    left: 0;
+    top: 0;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    z-index: 1000;
+}
+
+/* Hero section style */
+header.hero {
+    background-image: url('../assets/hero-image.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    color: white;
+    text-align: center;
+    /* Center text on all devices */
+    padding: 20px;
+    /* Add padding for small screens */
+    width: 100%;
+    min-height: 100vh;
+    /* Ensure section takes up full viewport height */
+}
+
+/* Add a sea blue blur overlay to the bottom with transparency */
+header.hero::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    /* Adjust height as needed */
+    background: rgba(5, 167, 204, 0.5);
+    /* Sea blue color with transparency */
+    filter: blur(30px);
+    /* Adjust blur radius as needed */
+    z-index: 1;
+}
+
+
+header.hero>* {
+    position: relative;
+    z-index: 2;
+    /* Ensure content is above the overlay */
+}
+
+
+/* Navbar style */
+.navbar {
+    width: 100%;
+    padding: 25px 35px;
+
+    /* Add padding on left and right */
+    background-color: rgba(255, 242, 242, 0.849);
+    /* White with opacity */
+    display: flex;
+    justify-content: space-between;
+    /* Default alignment */
+    align-items: center;
+    position: fixed;
+    /* Fixed at the top */
+    border-radius: 100px;
+    /* Rounded corners */
+    margin-top: 35px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Optional: add a shadow for better separation */
+}
+
+
+/* Navbar container */
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Space between logo and menu */
+    width: 100%;
+    max-width: 1200px;
+    /* Optional max width */
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Navbar logo style */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+/* Styling for "Detik" text */
+.logo-text.detik {
+    font-size: 50px;
+    /* Font size for "Detik" */
+    font-weight: bold;
+    /* Bold font for "Detik" */
+    color: rgb(30, 30, 146);
+    /* Color for "Detik" text */
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+}
+
+/* Styling for "Travel" text */
+.logo-text.travel {
+    font-size: 50px;
+    /* Font size for "Travel" */
+    font-weight: normal;
+    /* Normal font weight for "Travel" */
+    color: rgb(245, 135, 62);
+    /* Color for "Travel" text */
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+}
+
+/* Navbar menu list */
+.navbar-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 100px;
+    /* Space between menu items */
+    align-items: center;
+    /* Align items centrally */
+    flex-grow: 1;
+    /* Allow ul to grow and take up available space */
+    justify-content: center;
+    /* Center align items */
+    font-size: 20px;
+    transition: opacity 0.3s ease;
+    /* Smooth transition for visibility */
+}
+
+/* Navbar links */
+.navbar-menu a {
+    color: black;
+    /* Black text color */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+}
+
+/* Hamburger button styling */
+.navbar-toggler {
+    display: none;
+    /* Hide by default */
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+    /* Set button color */
+}
+
+/* Show navbar menu when hamburger button is clicked */
+.navbar-menu.active {
+    display: flex;
+    /* Show menu */
+    flex-direction: column;
+    /* Stack items vertically */
+    position: absolute;
+    top: 100%;
+    /* Position menu below the navbar */
+    left: 0;
+    /* Align menu to the left edge of the container */
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Background color for the menu */
+    width: 100%;
+    /* Full width to align with the logo */
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    /* Optional: Rounded corners for the dropdown menu */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Optional: Shadow effect for the dropdown menu */
+}
+
+/* Align the menu items with the logo */
+.navbar-menu.active li {
+    padding: 10px 0;
+    /* Add spacing between menu items */
+    text-align: center;
+    /* Center text in each menu item */
+}
+
+/* Ensure that the menu items have proper spacing and alignment */
+.navbar-menu.active a {
+    display: block;
+    /* Ensure links are block-level for full-width clickable area */
+    color: black;
+    /* Black text color */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+/* Ensure that the menu does not exceed the screen width */
+@media (max-width: 600px) {
+    .navbar-menu.active {
+        width: calc(100% - 40px);
+        /* Slightly reduce width to fit within viewport */
+        left: 20px;
+        /* Add left margin to align with viewport */
+    }
+}
+
+/* Hero content styling */
+.hero-content {
+    margin-top: 20vh;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about-section {
+    padding: 50px 20px;
+    background-image: url(../assets/about-image.jpeg);
+    background-size: cover;
+    /* Ensure background image covers entire section */
+    background-position: center;
+    /* Center the background image */
+    background-repeat: no-repeat;
+    /* Prevent background image from repeating */
+    width: 100%;
+    min-height: 100vh;
+    /* Ensure section takes up full viewport height */
+    margin-top: -85px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* Center content vertically */
+    justify-content: center;
+    /* Center content horizontally */
+    color: #fff;
+    /* Ensure text is readable on the background image */
+    text-align: center;
+    /* Center text */
+}
+
+/* Add a blue blur overlay to the bottom */
+.about-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    /* Adjust height as needed */
+    background: rgba(5, 167, 204, 0.5);
+    /* Sea blue color with transparency */
+    filter: blur(50px);
+    /* Adjust blur radius as needed */
+    z-index: 1;
+}
+
+
+
+/* Content within about-section */
+.about-section .content {
+    max-width: 800px;
+    /* Limit width for better readability */
+    margin: 0 auto;
+    /* Center the content */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background for better readability */
+    border-radius: 10px;
+    /* Add rounded corners */
+    width: 100%;
+    min-height: 100vh;
+    /* Ensure section takes up full viewport height */
+}
+
+/* News section styling */
+.news-section {
+    padding: 50px 20px;
+    background-image: url(../assets/news-image.jpeg);
+    width: 100%;
+    min-height: 100vh;
+    /* Ensure section takes up full viewport height */
+    display: flex;
+    align-items: center;
+    /* Center content vertically */
+    justify-content: center;
+    /* Center content horizontally */
+    opacity: 0.10;
+}
+
+/* Content within news-section */
+.news-section .content {
+    max-width: 800px;
+    /* Limit width for better readability */
+    margin: 0 auto;
+    /* Center the content */
+    padding: 20px;
+    background-color: #fff;
+    /* White background */
+    border-radius: 10px;
+    /* Add rounded corners */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    /* Add shadow for better separation from background */
+}
+
+/* Ensure content appears below the hero section */
+#mainContent {
+    margin-top: 80px;
+    /* Offset for the fixed navbar */
+}
+
+/* Responsive Design */
+
+/* Mobile (up to 600px) */
+@media (max-width: 600px) {
+    header.hero {
+        height: 80vh;
+        /* Reduce height for mobile */
+        padding: 10px;
+    }
+
+    .navbar {
+        width: 100%;
+        /* Ensure navbar takes full width */
+        left: 0;
+        right: 0;
+        padding: 10px;
+        /* Add padding for smaller screens */
+    }
+
+    .navbar-menu {
+        display: none;
+        /* Hide menu by default */
+        flex-direction: column;
+        /* Stack items vertically */
+        gap: 10px;
+        /* Space between menu items */
+        width: 100%;
+        /* Full width */
+        background-color: rgba(255, 255, 255, 0.9);
+        /* Background color for mobile menu */
+    }
+
+    .navbar-menu.active {
+        display: flex;
+        /* Show menu when active */
+    }
+
+    .navbar-toggler {
+        display: block;
+        /* Show hamburger button */
+    }
+
+    /* Mobile specific styles for about-section */
+    .about-section {
+        padding: 30px 15px;
+        /* Adjust padding for mobile */
+        height: auto;
+        /* Allow section to adjust height based on content */
+        min-height: 80vh;
+        /* Ensure section still takes up most of the viewport */
+    }
+
+    .about-section .content {
+        padding: 15px;
+    }
+
+    /* Mobile specific styles for news-section */
+    .news-section {
+        padding: 30px 15px;
+        /* Adjust padding for mobile */
+        min-height: 80vh;
+        /* Ensure section still takes up most of the viewport */
+    }
+
+    .news-section .content {
+        padding: 15px;
+    }
+}
+
+/* Tablet (601px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    header.hero {
+        height: 90vh;
+        /* Slightly taller for tablets */
+        padding: 20px;
+    }
+
+    .navbar {
+        width: 100%;
+        /* Ensure navbar takes full width */
+        left: 0;
+        right: 0;
+    }
+
+    .navbar-menu {
+        display: flex;
+        /* Show menu on tablet */
+        flex-direction: row;
+        /* Stack items horizontally */
+        gap: 20px;
+        /* Space between menu items */
+        overflow-x: auto;
+        /* Allow horizontal scrolling if necessary */
+    }
+
+    .navbar-toggler {
+        display: none;
+        /* Hide hamburger button on tablet */
+    }
+
+    /* Tablet specific styles for about-section */
+    .about-section {
+        padding: 40px 20px;
+        /* Adjust padding for tablet */
+        height: auto;
+        /* Allow section to adjust height based on content */
+        min-height: 90vh;
+        /* Ensure section still takes up most of the viewport */
+    }
+
+    .about-section .content {
+        padding: 20px;
+    }
+
+    /* Tablet specific styles for news-section */
+    .news-section {
+        padding: 40px 20px;
+        /* Adjust padding for tablet */
+        min-height: 90vh;
+        /* Ensure section still takes up most of the viewport */
+    }
+
+    .news-section .content {
+        padding: 20px;
+    }
+}
+
+/* Desktop (1025px - 2499px) */
+@media (min-width: 1025px) and (max-width: 2499px) {
+    .about-section {
+        padding: 50px 20px;
+        /* Adjust padding for desktop */
+        height: 100vh;
+        /* Full viewport height */
+    }
+
+    .about-section .content {
+        padding: 30px;
+    }
+
+    .news-section {
+        padding: 50px 20px;
+        /* Adjust padding for desktop */
+        min-height: 100vh;
+        /* Ensure section takes up full viewport height */
+    }
+
+    .news-section .content {
+        padding: 30px;
+    }
+}
+
+/* Large Desktop (2500px and up) */
+@media (min-width: 2500px) {
+    .about-section {
+        padding: 70px 40px;
+        /* Increase padding for large screens */
+        height: 100vh;
+        /* Full viewport height */
+    }
+
+    .about-section .content {
+        max-width: 1200px;
+        /* Increase max-width for large screens */
+        padding: 40px;
+    }
+
+    .news-section {
+        padding: 70px 40px;
+        /* Increase padding for large screens */
+        min-height: 100vh;
+        /* Ensure section takes up full viewport height */
+    }
+
+    .news-section .content {
+        max-width: 1200px;
+        /* Increase max-width for large screens */
+        padding: 40px;
+    }
+}
